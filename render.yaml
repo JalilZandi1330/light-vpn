@@ -4,6 +4,7 @@ services:
     env: docker
     dockerfilePath: ./Dockerfile
     plan: free
+    healthCheckPath: /ss-ws
     envVars:
       - key: SS_PASSWORD
         generateValue: true

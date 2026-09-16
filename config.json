@@ -3,11 +3,17 @@
   "inbounds": [
     {
       "type": "shadowsocks",
-      "tag": "ss-in",
+      "tag": "ss-ws",
       "listen": "0.0.0.0",
       "listen_port": 3000,
       "method": "aes-128-gcm",
-      "password": "REPLACE_ME_16CHAR"
+      "password": "REPLACE_ME_16CHAR",
+      "transport": {
+        "type": "ws",
+        "path": "/ss-ws",
+        "max_early_data": 0,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     }
   ],
   "outbounds": [
