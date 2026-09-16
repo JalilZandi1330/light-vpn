@@ -1,14 +1,17 @@
 #!/bin/sh
 set -e
-if [ -z "$SS_PASSWORD" ]; then
-  SS_PASSWORD=$(cat /dev/urandom | tr -dc 'A-Za-z0-9' | head -c 16)
-  echo "Generated SS_PASSWORD=$SS_PASSWORD"
+if [ -z "$VLESS_UUID" ]; then
+  if [ -r /proc/sys/kernel/random/uuid ]; then
+    VLESS_UUID=$(cat /proc/sys/kernel/random/uuid)
+  else
+    VLESS_UUID=$(cat /dev/urandom | tr -dc 'a-f0-9' | head -c 32 | sed 's/\(........\)\(....\)\(....\)\(....\)\(............\)/\1-\2-\3-\4-\5/')
+  fi
+  echo "Generated VLESS_UUID=$VLESS_UUID"
 fi
-sed -i "s/REPLACE_ME_16CHAR/$SS_PASSWORD/" /etc/sing-box/config.json
+sed -i "s/REPLACE_ME_UUID/$VLESS_UUID/" /etc/sing-box/config.json
 if [ -n "$PORT" ]; then
   sed -i "s/3000/$PORT/" /etc/sing-box/config.json
   echo "Listening on PORT=$PORT"
 fi
-# Also support RENDER's 10000
 cat /etc/sing-box/config.json
 exec sing-box run -c /etc/sing-box/config.json

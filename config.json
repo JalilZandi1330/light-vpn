@@ -2,18 +2,12 @@
   "log": { "level": "info" },
   "inbounds": [
     {
-      "type": "shadowsocks",
-      "tag": "ss-ws",
+      "type": "vless",
+      "tag": "vless-ws",
       "listen": "0.0.0.0",
       "listen_port": 3000,
-      "method": "aes-128-gcm",
-      "password": "REPLACE_ME_16CHAR",
-      "transport": {
-        "type": "ws",
-        "path": "/ss-ws",
-        "max_early_data": 0,
-        "early_data_header_name": "Sec-WebSocket-Protocol"
-      }
+      "users": [{ "uuid": "REPLACE_ME_UUID", "flow": "" }],
+      "transport": { "type": "ws", "path": "/vless-ws" }
     }
   ],
   "outbounds": [

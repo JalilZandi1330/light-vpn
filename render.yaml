@@ -4,9 +4,8 @@ services:
     env: docker
     dockerfilePath: ./Dockerfile
     plan: free
-    healthCheckPath: /ss-ws
     envVars:
-      - key: SS_PASSWORD
+      - key: VLESS_UUID
         generateValue: true
       - key: PORT
         value: 10000
