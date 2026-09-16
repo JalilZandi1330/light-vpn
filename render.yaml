@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: light-vpn
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: SS_PASSWORD
+        generateValue: true
+      - key: PORT
+        value: 10000
