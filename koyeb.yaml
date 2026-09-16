@@ -1,0 +1,14 @@
+# Koyeb config (optional, for koyeb CLI)
+# deploy with: koyeb service create --config koyeb.yaml
+name: light-vpn
+type: web
+regions: [fra]
+instance_type: nano
+docker:
+  dockerfile: ./Dockerfile
+ports:
+  - port: 3000
+    protocol: tcp
+env:
+  - name: SS_PASSWORD
+    value: "REPLACE_WITH_16CHAR"
