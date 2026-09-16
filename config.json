@@ -6,13 +6,11 @@
       "tag": "ss-in",
       "listen": "0.0.0.0",
       "listen_port": 3000,
-      "method": "2022-blake3-aes-128-gcm",
-      "password": "REPLACE_ME_16CHAR",
-      "multiplex": { "enabled": true }
+      "method": "aes-128-gcm",
+      "password": "REPLACE_ME_16CHAR"
     }
   ],
   "outbounds": [
     { "type": "direct", "tag": "direct" }
-  ],
-  "route": { "final": "direct" }
+  ]
 }
