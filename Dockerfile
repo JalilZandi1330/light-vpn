@@ -1,0 +1,6 @@
+FROM ghcr.io/sagernet/sing-box:latest
+COPY config.json /etc/sing-box/config.json
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+EXPOSE 3000
+CMD ["/entrypoint.sh"]
